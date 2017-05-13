@@ -1,10 +1,9 @@
 
 spring:
-  profiles : dev
   datasource:
     name: mydb
     type: com.alibaba.druid.pool.DruidDataSource
-    url: jdbc:mysql://127.0.0.1:3306/huckathon
+    url: jdbc:mysql://localhost:3306/hackathon?useUnicode=true&characterEncoding=utf-8
     username: root
     password: root
     driver-class-name: com.mysql.jdbc.Driver
@@ -18,8 +17,14 @@ spring:
     testOnBorrow: false
     testOnReturn: false
 
+#    mvc:
+#        view:
+#          prefix: /WEB-INF/views/
+#          suffix: .jsp
 
 mybatis:
-  mapperLocations: classpath:com/kry/dao/*.xml
+  mapperLocations: classpath*:mapper/*.xml
   typeAliasesPackage: com.kry.entity
   configLocation: classpath:/mybatis-config.xml
+
+

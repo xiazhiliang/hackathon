@@ -2,10 +2,10 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.kry.dao.AttributeMapper">
   <select id="queryByType" resultType="com.kry.entity.Attribute" parameterType="java.lang.Integer">
-    select * from attribute attr where attr.type = #{type}
+    select id as 'id',name as 'name' from attribute attr where attr.type = #{type}
   </select>
 
-  <insert id="insert" parameterType="com.domain.Attribute">
+  <insert id="insert" parameterType="com.kry.entity.Attribute">
     insert into attribute (id, name, type,
     description, index)
     values (#{id}, #{name}, #{type},

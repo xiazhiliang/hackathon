@@ -21,13 +21,13 @@
     delete from company
     where id = #{id,jdbcType=BIGINT}
   </delete>
-  <insert id="insert" parameterType="com.domain.Company">
+  <insert id="insert" parameterType="com.kry.entity.Product">
     insert into company (id, name, img, 
       homepage, comment)
     values (#{id,jdbcType=BIGINT}, #{name,jdbcType=VARCHAR}, #{img,jdbcType=VARCHAR}, 
       #{homepage,jdbcType=VARCHAR}, #{comment,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="com.domain.Company">
+  <insert id="insertSelective" parameterType="com.kry.entity.Product">
     insert into company
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="id != null">
@@ -64,7 +64,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.domain.Company">
+  <update id="updateByPrimaryKeySelective" parameterType="com.kry.entity.Product">
     update company
     <set>
       <if test="name != null">
@@ -82,7 +82,7 @@
     </set>
     where id = #{id,jdbcType=BIGINT}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.domain.Company">
+  <update id="updateByPrimaryKey" parameterType="com.kry.entity.Product">
     update company
     set name = #{name,jdbcType=VARCHAR},
       img = #{img,jdbcType=VARCHAR},

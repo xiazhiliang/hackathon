@@ -21,13 +21,13 @@
     delete from product_attribute
     where id = #{id,jdbcType=BIGINT}
   </delete>
-  <insert id="insert" parameterType="domain.ProductAttribute">
+  <insert id="insert" parameterType="com.kry.entity.ProductAttribute">
     insert into product_attribute (id, product_id, attribute_id, 
       create_time, update_time)
     values (#{id,jdbcType=BIGINT}, #{productId,jdbcType=BIGINT}, #{attributeId,jdbcType=BIGINT}, 
       #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP})
   </insert>
-  <insert id="insertSelective" parameterType="domain.ProductAttribute">
+  <insert id="insertSelective" parameterType="com.kry.entity.ProductAttribute">
     insert into product_attribute
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="id != null">
@@ -64,7 +64,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="domain.ProductAttribute">
+  <update id="updateByPrimaryKeySelective" parameterType="com.kry.entity.ProductAttribute">
     update product_attribute
     <set>
       <if test="productId != null">
@@ -82,7 +82,7 @@
     </set>
     where id = #{id,jdbcType=BIGINT}
   </update>
-  <update id="updateByPrimaryKey" parameterType="domain.ProductAttribute">
+  <update id="updateByPrimaryKey" parameterType="com.kry.entity.ProductAttribute">
     update product_attribute
     set product_id = #{productId,jdbcType=BIGINT},
       attribute_id = #{attributeId,jdbcType=BIGINT},

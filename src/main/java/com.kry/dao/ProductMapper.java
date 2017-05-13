@@ -1,9 +1,9 @@
 package com.kry.dao;
 
 import com.kry.entity.Product;
-import org.springframework.stereotype.Repository;
+import org.apache.ibatis.annotations.Mapper;
 
-@Repository
+@Mapper
 public interface ProductMapper {
     int deleteByPrimaryKey(Long id);
 

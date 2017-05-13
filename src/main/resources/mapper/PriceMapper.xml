@@ -21,13 +21,13 @@
     delete from price
     where id = #{id,jdbcType=BIGINT}
   </delete>
-  <insert id="insert" parameterType="com.domain.Price">
+  <insert id="insert" parameterType="com.kry.entity.Price">
     insert into price (id, price, discount, 
       unit, rate)
     values (#{id,jdbcType=BIGINT}, #{price,jdbcType=DECIMAL}, #{discount,jdbcType=INTEGER}, 
       #{unit,jdbcType=VARCHAR}, #{rate,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="com.domain.Price">
+  <insert id="insertSelective" parameterType="com.kry.entity.Price">
     insert into price
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="id != null">
@@ -64,7 +64,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.domain.Price">
+  <update id="updateByPrimaryKeySelective" parameterType="com.kry.entity.Price">
     update price
     <set>
       <if test="price != null">
@@ -82,7 +82,7 @@
     </set>
     where id = #{id,jdbcType=BIGINT}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.domain.Price">
+  <update id="updateByPrimaryKey" parameterType="com.kry.entity.Price">
     update price
     set price = #{price,jdbcType=DECIMAL},
       discount = #{discount,jdbcType=INTEGER},

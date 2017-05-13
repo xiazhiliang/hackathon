@@ -1,9 +1,10 @@
 package com.kry.dao;
 
 import com.kry.entity.Price;
-import org.springframework.stereotype.Repository;
 
-@Repository
+import org.apache.ibatis.annotations.Mapper;
+
+@Mapper
 public interface PriceMapper {
     int deleteByPrimaryKey(Long id);
 

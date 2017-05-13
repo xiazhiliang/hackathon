@@ -24,7 +24,7 @@
     delete from product
     where id = #{id,jdbcType=BIGINT}
   </delete>
-  <insert id="insert" parameterType="com.domain.Product">
+  <insert id="insert" parameterType="com.kry.entity.ProductProperty">
     insert into product (id, product_id, device_name, 
       memory, flash_memory, pixel, 
       wlan, wireless_model)
@@ -32,7 +32,7 @@
       #{memory,jdbcType=INTEGER}, #{flashMemory,jdbcType=INTEGER}, #{pixel,jdbcType=INTEGER}, 
       #{wlan,jdbcType=VARCHAR}, #{wirelessModel,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="com.domain.Product">
+  <insert id="insertSelective" parameterType="com.kry.entity.ProductProperty">
     insert into product
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="id != null">
@@ -87,7 +87,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.domain.Product">
+  <update id="updateByPrimaryKeySelective" parameterType="com.kry.entity.ProductProperty">
     update product
     <set>
       <if test="productId != null">
@@ -114,7 +114,7 @@
     </set>
     where id = #{id,jdbcType=BIGINT}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.domain.Product">
+  <update id="updateByPrimaryKey" parameterType="com.kry.entity.ProductProperty">
     update product
     set product_id = #{productId,jdbcType=BIGINT},
       device_name = #{deviceName,jdbcType=VARCHAR},
