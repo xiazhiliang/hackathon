@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kry.dao.PriceMapper">
+  <resultMap id="BaseResultMap" type="com.kry.entity.Price">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="price" jdbcType="DECIMAL" property="price" />
+    <result column="discount" jdbcType="INTEGER" property="discount" />
+    <result column="unit" jdbcType="VARCHAR" property="unit" />
+    <result column="rate" jdbcType="VARCHAR" property="rate" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, price, discount, unit, rate
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from price
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from price
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.domain.Price">
+    insert into price (id, price, discount, 
+      unit, rate)
+    values (#{id,jdbcType=BIGINT}, #{price,jdbcType=DECIMAL}, #{discount,jdbcType=INTEGER}, 
+      #{unit,jdbcType=VARCHAR}, #{rate,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.domain.Price">
+    insert into price
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="price != null">
+        price,
+      </if>
+      <if test="discount != null">
+        discount,
+      </if>
+      <if test="unit != null">
+        unit,
+      </if>
+      <if test="rate != null">
+        rate,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="price != null">
+        #{price,jdbcType=DECIMAL},
+      </if>
+      <if test="discount != null">
+        #{discount,jdbcType=INTEGER},
+      </if>
+      <if test="unit != null">
+        #{unit,jdbcType=VARCHAR},
+      </if>
+      <if test="rate != null">
+        #{rate,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.domain.Price">
+    update price
+    <set>
+      <if test="price != null">
+        price = #{price,jdbcType=DECIMAL},
+      </if>
+      <if test="discount != null">
+        discount = #{discount,jdbcType=INTEGER},
+      </if>
+      <if test="unit != null">
+        unit = #{unit,jdbcType=VARCHAR},
+      </if>
+      <if test="rate != null">
+        rate = #{rate,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.domain.Price">
+    update price
+    set price = #{price,jdbcType=DECIMAL},
+      discount = #{discount,jdbcType=INTEGER},
+      unit = #{unit,jdbcType=VARCHAR},
+      rate = #{rate,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

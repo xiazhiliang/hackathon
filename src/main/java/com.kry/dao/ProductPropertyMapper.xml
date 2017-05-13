@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kry.dao.ProductPropertyMapper">
+  <resultMap id="BaseResultMap" type="com.kry.entity.ProductProperty">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="product_id" jdbcType="BIGINT" property="productId" />
+    <result column="device_name" jdbcType="VARCHAR" property="deviceName" />
+    <result column="memory" jdbcType="INTEGER" property="memory" />
+    <result column="flash_memory" jdbcType="INTEGER" property="flashMemory" />
+    <result column="pixel" jdbcType="INTEGER" property="pixel" />
+    <result column="wlan" jdbcType="VARCHAR" property="wlan" />
+    <result column="wireless_model" jdbcType="VARCHAR" property="wirelessModel" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, product_id, device_name, memory, flash_memory, pixel, wlan, wireless_model
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from product
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from product
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.domain.Product">
+    insert into product (id, product_id, device_name, 
+      memory, flash_memory, pixel, 
+      wlan, wireless_model)
+    values (#{id,jdbcType=BIGINT}, #{productId,jdbcType=BIGINT}, #{deviceName,jdbcType=VARCHAR}, 
+      #{memory,jdbcType=INTEGER}, #{flashMemory,jdbcType=INTEGER}, #{pixel,jdbcType=INTEGER}, 
+      #{wlan,jdbcType=VARCHAR}, #{wirelessModel,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.domain.Product">
+    insert into product
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="productId != null">
+        product_id,
+      </if>
+      <if test="deviceName != null">
+        device_name,
+      </if>
+      <if test="memory != null">
+        memory,
+      </if>
+      <if test="flashMemory != null">
+        flash_memory,
+      </if>
+      <if test="pixel != null">
+        pixel,
+      </if>
+      <if test="wlan != null">
+        wlan,
+      </if>
+      <if test="wirelessModel != null">
+        wireless_model,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="productId != null">
+        #{productId,jdbcType=BIGINT},
+      </if>
+      <if test="deviceName != null">
+        #{deviceName,jdbcType=VARCHAR},
+      </if>
+      <if test="memory != null">
+        #{memory,jdbcType=INTEGER},
+      </if>
+      <if test="flashMemory != null">
+        #{flashMemory,jdbcType=INTEGER},
+      </if>
+      <if test="pixel != null">
+        #{pixel,jdbcType=INTEGER},
+      </if>
+      <if test="wlan != null">
+        #{wlan,jdbcType=VARCHAR},
+      </if>
+      <if test="wirelessModel != null">
+        #{wirelessModel,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.domain.Product">
+    update product
+    <set>
+      <if test="productId != null">
+        product_id = #{productId,jdbcType=BIGINT},
+      </if>
+      <if test="deviceName != null">
+        device_name = #{deviceName,jdbcType=VARCHAR},
+      </if>
+      <if test="memory != null">
+        memory = #{memory,jdbcType=INTEGER},
+      </if>
+      <if test="flashMemory != null">
+        flash_memory = #{flashMemory,jdbcType=INTEGER},
+      </if>
+      <if test="pixel != null">
+        pixel = #{pixel,jdbcType=INTEGER},
+      </if>
+      <if test="wlan != null">
+        wlan = #{wlan,jdbcType=VARCHAR},
+      </if>
+      <if test="wirelessModel != null">
+        wireless_model = #{wirelessModel,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.domain.Product">
+    update product
+    set product_id = #{productId,jdbcType=BIGINT},
+      device_name = #{deviceName,jdbcType=VARCHAR},
+      memory = #{memory,jdbcType=INTEGER},
+      flash_memory = #{flashMemory,jdbcType=INTEGER},
+      pixel = #{pixel,jdbcType=INTEGER},
+      wlan = #{wlan,jdbcType=VARCHAR},
+      wireless_model = #{wirelessModel,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

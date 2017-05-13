@@ -1,0 +1,25 @@
+
+spring:
+  profiles : dev
+  datasource:
+    name: mydb
+    type: com.alibaba.druid.pool.DruidDataSource
+    url: jdbc:mysql://127.0.0.1:3306/huckathon
+    username: root
+    password: root
+    driver-class-name: com.mysql.jdbc.Driver
+    minIdle: 1
+    maxActive: 2
+    initialSize: 1
+    timeBetweenEvictionRunsMillis: 3000
+    minEvictableIdleTimeMillis: 300000
+    validationQuery: SELECT 'ZTM' FROM DUAL
+    testWhileIdle: true
+    testOnBorrow: false
+    testOnReturn: false
+
+
+mybatis:
+  mapperLocations: classpath:com/kry/dao/*.xml
+  typeAliasesPackage: com.kry.entity
+  configLocation: classpath:/mybatis-config.xml
