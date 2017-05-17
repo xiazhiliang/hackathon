@@ -9,7 +9,7 @@ public class Product implements Serializable {
 
     private String img;
 
-    private String homepage;
+    private String link;
 
     private String comment;
 
@@ -37,12 +37,12 @@ public class Product implements Serializable {
         this.img = img == null ? null : img.trim();
     }
 
-    public String getHomepage() {
-        return homepage;
+    public String getLink() {
+        return link;
     }
 
-    public void setHomepage(String homepage) {
-        this.homepage = homepage == null ? null : homepage.trim();
+    public void setLink(String link) {
+        this.link = link;
     }
 
     public String getComment() {

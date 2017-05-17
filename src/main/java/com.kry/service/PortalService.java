@@ -1,7 +1,8 @@
 package com.kry.service;
 
 import com.kry.entity.Attribute;
-import com.kry.entity.Product;
+import com.kry.entity.ProductProperty;
+import com.kry.vo.SearchVo;
 
 import java.util.List;
 
@@ -20,7 +21,14 @@ public interface PortalService {
     List<Attribute> queryByType(Integer type);
 
     /**
+     * 属性类型查询
+     * @param type
+     * @return
+     */
+    List<Attribute> queryByPriceType(Integer type,List<Long> list);
+
+    /**
      * 产品列表查询
      */
-    List<Product> queryList();
+    List<ProductProperty> queryList(SearchVo searchVo);
 }

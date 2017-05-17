@@ -8,7 +8,8 @@ public enum TypeEnum{
     KEY_WORD(1,"标签"),
     BUSINESS(2,"覆盖业态"),
     PRODUCT_MODULE(3,"产品模块"),
-    PRICE_RANCE(4,"价格范围");
+    PRICE_RANCE(4,"价格范围"),
+    AREA(5,"服务地区");
 
     private Integer key;
     private String value;

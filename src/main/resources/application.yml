@@ -17,10 +17,14 @@ spring:
     testOnBorrow: false
     testOnReturn: false
 
-#    mvc:
-#        view:
-#          prefix: /WEB-INF/views/
+    mvc:
+        view:
+          prefix: /WEB-INF/views/
 #          suffix: .jsp
+
+# LOGGING
+logging:
+    level: DEBUG
 
 mybatis:
   mapperLocations: classpath*:mapper/*.xml

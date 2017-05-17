@@ -10,5 +10,8 @@ import java.util.List;
 public interface AttributeMapper {
     List<Attribute> queryByType(@Param("type") Integer type);
 
+    List<Attribute> queryByPriceType(@Param("type") Integer type,@Param("ids")List<Long> ids);
+
+
     int insert(Attribute attribute);
 }

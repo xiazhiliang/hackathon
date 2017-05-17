@@ -4,6 +4,13 @@
   <select id="queryByType" resultType="com.kry.entity.Attribute" parameterType="java.lang.Integer">
     select id as 'id',name as 'name' from attribute attr where attr.type = #{type}
   </select>
+  <select id="queryByPriceType" resultType="com.kry.entity.Attribute">
+    select id as 'id',name as 'name' from attribute attr where attr.type = #{type}
+    and id in
+    <foreach collection="ids" item="item"  open="(" separator="," close=")">
+       #{item}
+    </foreach>
+  </select>
 
   <insert id="insert" parameterType="com.kry.entity.Attribute">
     insert into attribute (id, name, type,

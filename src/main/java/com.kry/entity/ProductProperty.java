@@ -1,6 +1,7 @@
 package com.kry.entity;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 
 public class ProductProperty implements Serializable {
     private Long id;
@@ -8,6 +9,8 @@ public class ProductProperty implements Serializable {
     private Long productId;
 
     private String deviceName;
+
+    private BigDecimal price;
 
     private Integer memory;
 
@@ -41,6 +44,14 @@ public class ProductProperty implements Serializable {
 
     public void setDeviceName(String deviceName) {
         this.deviceName = deviceName;
+    }
+
+    public BigDecimal getPrice() {
+        return price;
+    }
+
+    public void setPrice(BigDecimal price) {
+        this.price = price;
     }
 
     public Integer getMemory() {
