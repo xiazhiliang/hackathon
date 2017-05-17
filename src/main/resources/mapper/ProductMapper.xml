@@ -5,7 +5,7 @@
     <id column="id" jdbcType="BIGINT" property="id" />
     <result column="name" jdbcType="VARCHAR" property="name" />
     <result column="img" jdbcType="VARCHAR" property="img" />
-    <result column="homepage" jdbcType="VARCHAR" property="homepage" />
+    <result column="link" jdbcType="VARCHAR" property="link" />
     <result column="comment" jdbcType="VARCHAR" property="comment" />
   </resultMap>
   <sql id="Base_Column_List">
@@ -17,8 +17,13 @@
     from company
     where id = #{id,jdbcType=BIGINT}
   </select>
-    <select id="queryByCondition" resultType="com.kry.entity.ProductProperty">
 
+    <select id="queryByCondition" resultType="com.kry.entity.ProductProperty">
+      select * from product pro left join product_attribute pa on pro.id = pa.product_id left join product_property pp on pp.product_id = pro.id
+      where pa.attribute_id in
+      <foreach collection="attributeId" item="item" open="(" separator="," close=")">
+          #{item}
+      </foreach>
     </select>
     <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
     delete from company
