@@ -4,22 +4,22 @@ package com.kry.vo;
  * Created by xia.zl on 2017/5/14.
  */
 public class SearchVo {
-    private Long[] attribute;
-    private Long[] attributePrice;
+    private Long[] attributeId;
+    private String attributePrice;
 
-    public Long[] getAttribute() {
-        return attribute;
+    public Long[] getAttributeId() {
+        return attributeId;
     }
 
-    public void setAttribute(Long[] attribute) {
-        this.attribute = attribute;
+    public void setAttributeId(Long[] attributeId) {
+        this.attributeId = attributeId;
     }
 
-    public Long[] getAttributePrice() {
+    public String getAttributePrice() {
         return attributePrice;
     }
 
-    public void setAttributePrice(Long[] attributePrice) {
+    public void setAttributePrice(String attributePrice) {
         this.attributePrice = attributePrice;
     }
 }

@@ -1,6 +1,5 @@
 package com.kry.service;
 
-import com.kry.common.TypeEnum;
 import com.kry.dao.AttributeMapper;
 import com.kry.dao.ProductMapper;
 import com.kry.entity.Attribute;
@@ -9,7 +8,6 @@ import com.kry.vo.SearchVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -36,10 +34,10 @@ public class PortalServiceImpl implements PortalService {
 
     @Override
     public List<ProductProperty> queryList(SearchVo searchVo) {
-        List<Attribute> attributes = queryByPriceType(TypeEnum.PRICE_RANCE.getKey(), Arrays.asList(searchVo.getAttributePrice()));
+        String attributePrice = searchVo.getAttributePrice();
         Integer upperLimit = null,lowerLimit=null;
-        if(attributes!=null) {
-            String[] priceSection = attributes.get(0).getName().split(",");
+        if(searchVo.getAttributePrice()!=null) {
+            String[] priceSection = attributePrice.split(",");
             if (priceSection.length > 1) {
                 lowerLimit = Integer.valueOf(priceSection[0]);
                 upperLimit = Integer.valueOf(priceSection[1]);
@@ -47,6 +45,6 @@ public class PortalServiceImpl implements PortalService {
                 lowerLimit = Integer.valueOf(priceSection[0]);
             }
         }
-        return productMapper.queryByCondition(searchVo.getAttribute(),lowerLimit,upperLimit);
+        return productMapper.queryByCondition(searchVo.getAttributeId(),lowerLimit,upperLimit);
     }
 }
